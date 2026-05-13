@@ -52,8 +52,9 @@ app.get('/', (req, res) => {
 app.use('/api/signals', signalsRoutes);
 
 const signalAnalyzer = require('./services/signalAnalyzer');
-signalAnalyzer.startBackgroundRefresh();
-
+setTimeout(() => {
+  signalAnalyzer.startBackgroundRefresh();
+}, 95000);
 app.use((req, res) => {
   res.status(404).json({ 
     error: 'Route not found',
